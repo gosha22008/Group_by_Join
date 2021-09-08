@@ -10,8 +10,8 @@ list_executors = ['Andrey', 'Ruslan', 'Misha', 'Ura', 'DJSmash', 'Anaconda', 'Ra
 list_alias = ['Andry', 'Rus', 'Crug', 'Long Hand', 'DJSmash', 'Anaconda', 'Rammstain', 'Aria', 'Linkin Park', 'NM']
 list_genres = ['Rock',  'Hip hop', 'Reggae', 'Pop', 'Jazz', 'Blues']
 list_albums = ['Album 1994', 'Album 1995', 'Album 1996', 'Album 1997', 'Album 1998', 'Album 1999', 'Album 2000',
-               'Album 2001', 'Album 2002', 'Album 2003', 'Album 2018', 'Album 2019']
-list_years = [1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2018, 2019]
+               'Album 2001', 'Album 2002', 'Album 2003', 'Album 2018', 'Album 2019', 'Album 2020']
+list_years = [1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2018, 2019, 2020]
 list_tracks = ['Мой день', 'My son', 'ljeflf', 'kdowpw', 'Drims', 'jfpjf', 'wrpr', '50', '49', 'krp3rk', 'lvnln',
                'nvlnvl', '8048094', '8744', 'My dog']
 list_longs = [180, 200, 350, 400, 150, 187, 188, 165, 212, 200, 190, 170, 147, 188, 192]
