@@ -16,10 +16,9 @@ print('-'*30)
 
 # 2.количество треков, вошедших в альбомы 2019-2020 годов;
 request = f'''
-    select sum(c_n) from (select count(t.name) c_n, year from track t
-      left join album a on t.id_album = a.id
+    select count(t.name) from track t
+      join album a on t.id_album = a.id
       where year between 2019 and 2020
-      group by year) x
     '''
 for i in connection.execute(request):
     print(i)
@@ -63,12 +62,13 @@ print('-'*30)
 
 # 6.название альбомов, в которых присутствуют исполнители более 1 жанра;
 request = f'''
-   select * from (select a.name, count(distinct  ge.id_genre) cg from album a
-  join album_executor ae on a.id = ae.id_album
-  join executor e on ae.id_executor = e.id
-  join genre_executor ge on e.id = ge.id_executor
-  group by  a.name) x
-  where cg > 1
+   select a."name" from genre_executor ge 
+    join genre g on ge.id_genre = g.id 
+    join executor e on ge.id_executor = e.id 
+    join album_executor ae on ae.id_executor = e.id 
+    join album a on ae.id_album = a.id 
+    group by a."name" 
+    having count(distinct g."name") > 1
       '''
 for i in connection.execute(request):
     print(i)
@@ -98,10 +98,14 @@ print('-'*30)
 
 # 9.название альбомов, содержащих наименьшее количество треков.
 request = f'''
-    select a.name, count(t.id) c from album a 
+    select a."name" ,count(t.id) ct from album a 
     full join track t on a.id = t.id_album 
-    group by a.name
-    order by c
+    group by a."name" 
+    having count(t.id) = (select count(t.id) from album a 
+    full join track t on a.id = t.id_album 
+    group by a."name" 
+    order by count(t.id)
+    limit 1)
     '''
 for i in connection.execute(request):
     print(i)
